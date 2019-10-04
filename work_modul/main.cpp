@@ -4,7 +4,7 @@
 #define ELEMENT 4
 
 int main() {
-	setlocale(LC_ALL, "Russian");
+	//setlocale(LC_ALL, "Russian");
 	std::srand(time(NULL));
 
 	int matrix_a[ELEMENT][ELEMENT];
@@ -14,12 +14,12 @@ int main() {
 		for (int j = 0; j < ELEMENT; j++) {
 			matrix_a[i][j] = std::rand() % 20 - 10;
 			matrix_b[i][j] = std::rand() % 20 - 10;
-			//не помню как инициализируется масив при создании (надо уточнить)
+			//clear result matrix
 			matrix_s[i][j] = 0;
 		}
 	}
 
-	std::cout << "матрица А" << std::endl;
+	std::cout << "matrix A" << std::endl;
 	for (int i = 0; i < ELEMENT; i++) {
 		for (int j = 0; j < ELEMENT; j++) {
 			std::cout << matrix_a[i][j] << "\t";
@@ -27,7 +27,7 @@ int main() {
 		std::cout << std::endl;
 	}
 
-	std::cout << "матрица B" << std::endl;
+	std::cout << "matrix B" << std::endl;
 	for (int i = 0; i < ELEMENT; i++) {
 		for (int j = 0; j < ELEMENT; j++) {
 			std::cout << matrix_b[i][j] << "\t";
@@ -35,7 +35,7 @@ int main() {
 		std::cout << std::endl;
 	}
 
-	//находим сумму А + В
+	//find sum matrix A + B
 	for (int i = 0; i < ELEMENT; i++) {
 		for (int j = 0; j < ELEMENT; j++) {
 			/*
@@ -47,7 +47,7 @@ int main() {
 		}
 	}
 
-	std::cout << "А + B" << std::endl;
+	std::cout << "A + B" << std::endl;
 	for (int i = 0; i < ELEMENT; i++) {
 		for (int j = 0; j < ELEMENT; j++) {
 			std::cout << matrix_s[i][j] << "\t";
@@ -55,7 +55,7 @@ int main() {
 		std::cout << std::endl;
 	}
 
-	//находим сумму В + А
+	//find sum matrix B + A
 	for (int i = 0; i < ELEMENT; i++) {
 		for (int j = 0; j < ELEMENT; j++) {
 			for (int s = 0; s < ELEMENT; s++) {
