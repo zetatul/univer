@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace cinema
 {
-    class Chair : Button
+    public class Chair : Button
     {
         enum EStatus
         {
@@ -17,42 +18,60 @@ namespace cinema
             Sale
         }
 
-        public Chair()
-        {
-        }
-
-        public Chair(int _position)
+        public Chair(Thickness _position)
         {
             uri_Free    = new Uri(@"pack://application:,,,/res/free.png");
             uri_Reserv  = new Uri(@"pack://application:,,,/res/reserv.png");
             uri_Sales   = new Uri(@"pack://application:,,,/res/sales.png");
 
-            e_Status = EStatus.Free;
+            me_Status = EStatus.Free;
+            ml_Lable = new Label();
+            var _stackPanel = new StackPanel();
 
-            img_Icon = new Image();
-            ChangeIcon();
-            Content = img_Icon;
-
-            Height = Width = 100;
+            Height = 120;
+            Width = 100;
             HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
             VerticalAlignment = System.Windows.VerticalAlignment.Top;
-            Margin = new System.Windows.Thickness(_position * 100, 300, 0, 0);
-            Name = "Button" + _position.ToString();
+            Margin = _position;
             Click += Chair_Click;
+
+            mimg_Icon = new Image();
+            mimg_Icon.Height = 100;
+            mimg_Icon.Width = 100;
+            mimg_Icon.Margin = new Thickness(0, -10, 0, 0);
+            mimg_Icon.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            mimg_Icon.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            ChangeIcon();
+            
+            ml_Lable.Height = 30;
+            ml_Lable.Width = 100;
+            ml_Lable.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            ml_Lable.VerticalAlignment = System.Windows.VerticalAlignment.Top;
+            ml_Lable.Margin = new Thickness(0, 0, 0, 0);
+            ml_Lable.Content = "";
+
+            _stackPanel.Children.Add(ml_Lable);
+            _stackPanel.Children.Add(mimg_Icon);
+            _stackPanel.Height = 120;
+            _stackPanel.Width = 100;
+            _stackPanel.Margin = new Thickness(0, 0, 0, 0);
+            _stackPanel.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
+            _stackPanel.VerticalAlignment = System.Windows.VerticalAlignment.Bottom;
+            Content = _stackPanel;
         }
 
         private void ChangeIcon()
         {
-            switch (e_Status)
+            switch (me_Status)
             {
                 case EStatus.Free:
-                    img_Icon.Source = new BitmapImage(uri_Free);
+                    mimg_Icon.Source = new BitmapImage(uri_Free);
                     break;
                 case EStatus.Reserv:
-                    img_Icon.Source = new BitmapImage(uri_Reserv);
+                    mimg_Icon.Source = new BitmapImage(uri_Reserv);
                     break;
                 case EStatus.Sale:
-                    img_Icon.Source = new BitmapImage(uri_Sales);
+                    mimg_Icon.Source = new BitmapImage(uri_Sales);
                     break;
                 default:
                     break;
@@ -61,14 +80,14 @@ namespace cinema
 
         private void Chair_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            switch (e_Status)
+            switch (me_Status)
             {
                 case EStatus.Free:
-                    e_Status = EStatus.Reserv;
+                    me_Status = EStatus.Reserv;
                     ChangeIcon();
                     break;
                 case EStatus.Reserv:
-                    e_Status = EStatus.Free;
+                    me_Status = EStatus.Free;
                     ChangeIcon();
                     break;
                 default:
@@ -78,10 +97,11 @@ namespace cinema
 
         public void Buy()
         {
-            switch (e_Status)
+            switch (me_Status)
             {
                 case EStatus.Reserv:
-                    e_Status = EStatus.Sale;
+                    ml_Lable.Content = "Выкупленно";
+                    me_Status = EStatus.Sale;
                     ChangeIcon();
                     IsEnabled = false;
                     break;
@@ -92,7 +112,7 @@ namespace cinema
 
         public bool isReserv()
         {
-            if(e_Status == EStatus.Reserv)
+            if(me_Status == EStatus.Reserv)
             {
                 return true;
             }
@@ -104,7 +124,7 @@ namespace cinema
 
         public bool isSale()
         {
-            if (e_Status == EStatus.Sale)
+            if (me_Status == EStatus.Sale)
             {
                 return true;
             }
@@ -116,9 +136,10 @@ namespace cinema
 
         public void Reset()
         {
-            if(e_Status == EStatus.Sale)
+            if(me_Status == EStatus.Sale)
             {
-                e_Status = EStatus.Free;
+                me_Status = EStatus.Free;
+                ml_Lable.Content = "";
                 ChangeIcon();
                 IsEnabled = true;
             }
@@ -128,7 +149,8 @@ namespace cinema
         private Uri uri_Reserv;
         private Uri uri_Sales;
 
-        private EStatus e_Status;
-        private Image img_Icon;
+        private EStatus me_Status;
+        private Image   mimg_Icon;
+        private Label   ml_Lable;
     }
 }
