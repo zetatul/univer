@@ -11,9 +11,8 @@ namespace cinema
     {
         public delegate List<Chair> CheckChair();
 
-        public CashBox(Thickness _position, CHole _owner)
+        public CashBox(Thickness _position)
         {
-            m_Owner = _owner;
             Height = 20;
             Width = 100;
             HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
@@ -31,7 +30,6 @@ namespace cinema
             }
         }
 
-        private CHole m_Owner;
         public CheckChair d_CheckChair;
     }
 }
