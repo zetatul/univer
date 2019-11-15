@@ -9,6 +9,8 @@ namespace cinema
 {
     public class CashBox : Button
     {
+        public delegate List<Chair> CheckChair();
+
         public CashBox(Thickness _position, CHole _owner)
         {
             m_Owner = _owner;
@@ -23,12 +25,13 @@ namespace cinema
 
         private void CashBox_Click(object sender, RoutedEventArgs e)
         {
-            foreach(Chair _c in m_Owner.CheckChair())
+            foreach(Chair _c in d_CheckChair())
             {
                 _c.Buy();
             }
         }
 
         private CHole m_Owner;
+        public CheckChair d_CheckChair;
     }
 }

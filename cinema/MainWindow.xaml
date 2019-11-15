@@ -6,4 +6,4 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:cinema"
         mc:Ignorable="d"
-        Title="MainWindow" Height="430" Width="810"/>
+        Title="MainWindow" Height="430" Width="810" ResizeMode="NoResize"/>

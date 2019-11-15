@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Comment CommentText="Interest">
+  <Comment CommentText="Интересно">
     <Position X="0.5" Y="0.5" Height="0.291" Width="6.794" />
   </Comment>
   <Class Name="cinema.Chair">
@@ -23,14 +23,14 @@
   <Class Name="cinema.CashBox">
     <Position X="0.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>CashBox.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="cinema.CHole">
     <Position X="4" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAACAACAAAAAAACAAA=</HashCode>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAACAACAAAAAAACAAA=</HashCode>
       <FileName>CHole.cs</FileName>
     </TypeIdentifier>
   </Class>

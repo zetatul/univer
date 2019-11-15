@@ -32,6 +32,7 @@ namespace cinema
 
             //initial CasheBox
             m_CashBox = new CashBox(new Thickness(0, 30, 0, 0), this);
+            m_CashBox.d_CheckChair = CheckChair;
             this.Children.Add(m_CashBox);
         }
 
